@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--    add .properties-->
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
+    <bean id="popMusicBean"
+          class="ru.podlubnyy.springsource.PopMusic">
+    </bean>
+
+    <bean id="rapMusicBean"
+          class="ru.podlubnyy.springsource.RapMusic">
+    </bean>
+
+    <bean id="musicPlayer"
+          class="ru.podlubnyy.springsource.MusicPlayer"
+        scope="prototype">
+        <property name="music">
+            <set>
+                <ref bean="popMusicBean"/>
+                <ref bean="rapMusicBean"/>
+            </set>
+        </property>
+
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
+    </bean>
+
+
+</beans>
