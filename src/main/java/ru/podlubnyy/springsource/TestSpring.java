@@ -20,6 +20,12 @@ public class TestSpring {
 
         System.out.println(compare);
 
+        //scope=prototype "compare object"
+        secondMusicPlayer.setName("My new Musical");
+        secondMusicPlayer.setVolume(75);
+
+        System.out.printf("FirstMusicPlayer: %s %d \n", firstMusicPlayer.getName(), firstMusicPlayer.getVolume());
+        System.out.printf("SecondMusicPlayer: %s %d \n", secondMusicPlayer.getName(), secondMusicPlayer.getVolume());
 
         /*
         System.out.println(musicPlayer.getName());
