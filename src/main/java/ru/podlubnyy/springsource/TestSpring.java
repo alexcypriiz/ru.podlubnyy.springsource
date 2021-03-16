@@ -7,42 +7,14 @@ public class TestSpring {
         ClassPathXmlApplicationContext context =
                 new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        RapMusic firstRapMusic = context.getBean("musicBean", RapMusic.class);
-        RapMusic secondRapMusic = context.getBean("musicBean", RapMusic.class);
+        PopMusic popMusic = context.getBean("popMusic", PopMusic.class);
+        RapMusic rapMusic = context.getBean("rapMusic", RapMusic.class);
 
-        secondRapMusic.setSong("All The Stars");
-        System.out.println(firstRapMusic.getSong());
-        System.out.println(secondRapMusic.getSong());
+        MusicPlayer musicPlayer1 = new MusicPlayer(popMusic);
+        musicPlayer1.playMusic();
 
-
-//        Music music = context.getBean("musicBean", Music.class);
-
-//        MusicPlayer musicPlayer = new MusicPlayer(music);
-
-//        Dependency Injection (DI)
-
-        /* Scope prototype
-       MusicPlayer firstMusicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-
-       MusicPlayer secondMusicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-
-       boolean compare = firstMusicPlayer == secondMusicPlayer;
-
-        System.out.println(compare);
-
-        //scope=prototype "compare object"
-        secondMusicPlayer.setName("My new Musical");
-        secondMusicPlayer.setVolume(75);
-
-        System.out.printf("FirstMusicPlayer: %s %d \n", firstMusicPlayer.getName(), firstMusicPlayer.getVolume());
-        System.out.printf("SecondMusicPlayer: %s %d \n", secondMusicPlayer.getName(), secondMusicPlayer.getVolume());
-
-
-
-
-        System.out.println(musicPlayer.getName());
-        System.out.println(musicPlayer.getVolume());
-*/
+        MusicPlayer musicPlayer2 = new MusicPlayer(rapMusic);
+        musicPlayer2.playMusic();
 
         context.close();
     }
