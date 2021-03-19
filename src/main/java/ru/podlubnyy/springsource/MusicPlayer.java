@@ -7,8 +7,22 @@ import java.util.ArrayList;
 import java.util.List;
 @Component
 public class MusicPlayer {
-    private RapMusic rapMusic;
-    private PopMusic popMusic;
+    private Music music;
+
+    private String name;
+    private int volume;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
 
     @Autowired
     public MusicPlayer(RapMusic rapMusic, PopMusic popMusic) {
@@ -16,7 +30,14 @@ public class MusicPlayer {
         this.popMusic = popMusic;
     }
 
-    public String playMusic() {
-        return "Playning: " + rapMusic.getSong() + ". Next: " + popMusic.getSong();
+    public MusicPlayer() {}
+
+    //IoC
+    public MusicPlayer(Music music) {
+        this.music = music;
+    }
+
+    public void playMusic() {
+            System.out.println("Playing: " + music.getSong());
     }
 }
