@@ -10,3 +10,5 @@
 .idea
 # Maven output directory
 target
+# Spring app
+spring-app1.iml
