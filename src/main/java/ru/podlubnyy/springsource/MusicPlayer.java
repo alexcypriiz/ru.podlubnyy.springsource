@@ -3,11 +3,13 @@ package ru.podlubnyy.springsource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
 @Component
+@Scope("prototype")
 public class MusicPlayer {
     @Value("${musicPlayer.name}")
     private String name;
@@ -21,9 +23,15 @@ public class MusicPlayer {
     public String getName() {
         return name;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getVolume() {
         return volume;
+    }
+    public void setVolume(int volume) {
+        this.volume = volume;
     }
 
     @Autowired
