@@ -12,10 +12,8 @@ public class TestSpring {
         musicPlayer2.setName("Chill");
         musicPlayer2.setVolume(55);
 
-        System.out.println(musicPlayer1.getName() + " " + musicPlayer1.getVolume());
-        System.out.println(musicPlayer2.getName() + " " +musicPlayer2.getVolume());
-
-        System.out.println(musicPlayer1.playMusic());
+        System.out.println(musicPlayer1.playMusic() );
+        System.out.println(musicPlayer2.playMusic() );
 
         context.close();
     }
