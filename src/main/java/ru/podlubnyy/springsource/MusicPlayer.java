@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Random;
 
 public class MusicPlayer {
+    private List<Music> musicList;
 
     @Value("${musicPlayer.name}")
     private String name;
@@ -18,6 +20,7 @@ public class MusicPlayer {
 
     private Music music1;
     private Music music2;
+    private Music music3;
 
     public String getName() {
         return name;
@@ -33,10 +36,14 @@ public class MusicPlayer {
         this.volume = volume;
     }
 
-    public MusicPlayer(@Qualifier("rapMusic") Music music1, @Qualifier("popMusic") Music music2) {
-        this.music1 = music1;
-        this.music2 = music2;
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
     }
 
-    public String playMusic() { return "Playing: " +music1.getSong() + ", " + music2.getSong();}
+    public String playMusic() {
+        Random random = new Random();
+
+        return "Playing: " + musicList.get(random.nextInt(musicList.size())).getSong()
+                + " with volume " + this.volume;
+    }
 }
